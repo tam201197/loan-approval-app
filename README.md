@@ -76,7 +76,7 @@ The prediction page always loads and uses the best validated model.
 - Shows prediction result (Approved / Rejected)
 - Displays active model metadata (model name, ROC-AUC, training time, hyperparameters)
 
-## 3️⃣ Model Validation
+## 4️⃣ Model Validation
 
 - Runs multiple ML models
 - Logs training progress
