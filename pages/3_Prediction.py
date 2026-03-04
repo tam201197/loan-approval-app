@@ -42,7 +42,7 @@ if metadata:
 else:
     st.warning("No metadata file found.")
 
-df = load_data()
+df = load_data(read_in_training_data=False)
 
 if df.empty:
     st.warning("No data available.")

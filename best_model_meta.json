@@ -6,5 +6,7 @@
         "classifier__n_estimators": 100
     },
     "training_samples": 45000,
-    "training_time": "2026-02-25 16:49:28"
+    "training_time": "2026-03-03 16:38:50",
+    "number_of_training_data": 45000,
+    "number_of_testing_data": 45000
 }

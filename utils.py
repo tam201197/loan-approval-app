@@ -21,7 +21,8 @@ from sklearn.pipeline import Pipeline
 from xgboost import XGBClassifier
 import os
 
-CSV_FILE = "loan_data.csv"
+CSV_FILE = "loan_training_data.csv"
+NEW_ENTRY_FILE = "loan_new_data.csv"
 
 COLUMNS = [
     "person_age",
@@ -39,14 +40,22 @@ COLUMNS = [
     "previous_loan_defaults_on_file"
 ]
 
-def load_data():
-    if os.path.exists(CSV_FILE):
-        return pd.read_csv(CSV_FILE)
+def load_data(read_in_training_data=True):
+    if read_in_training_data:
+        file_name = CSV_FILE
+    else:
+        file_name = NEW_ENTRY_FILE
+    if os.path.exists(file_name):
+        return pd.read_csv(file_name)
     else:
         return pd.DataFrame(columns=COLUMNS)
 
-def save_data(df):
-    df.to_csv(CSV_FILE, index=False)
+def save_data(df, save_in_training_data=True):
+    if save_in_training_data:
+        file_name = CSV_FILE
+    else:
+        file_name = NEW_ENTRY_FILE
+    df.to_csv(file_name, index=False)
 
 
 def load_model(df):
@@ -215,7 +224,7 @@ def validate_models(df, preprocessor, log_callback=None):
         "roc_auc": float(best_auc),
         "best_params": best_params,
         "training_samples": len(df),
-        "training_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        "training_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
 
     with open("best_model_meta.json", "w") as f:
