@@ -5,7 +5,7 @@ from utils import load_data, save_data, COLUMNS
 st.set_page_config(page_title="Loan Entry Form", layout="wide")
 st.title("📝 Loan Data Entry Form")
 
-df = load_data()
+df = load_data(read_in_training_data=False)
 
 # -----------------------------
 # Input Fields (NOT inside form yet)
@@ -120,7 +120,7 @@ if submitted:
 
     new_row_df = pd.DataFrame([new_entry], columns=COLUMNS)
     df = pd.concat([df, new_row_df], ignore_index=True)
-    save_data(df)
+    save_data(df, save_in_training_data=False)
 
     st.balloons()
     st.success("🎉 Entry successfully saved!")

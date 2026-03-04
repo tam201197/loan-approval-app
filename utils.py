@@ -224,7 +224,7 @@ def validate_models(df, preprocessor, log_callback=None):
         "roc_auc": float(best_auc),
         "best_params": best_params,
         "training_samples": len(df),
-        "training_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "training_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
     with open("best_model_meta.json", "w") as f:
